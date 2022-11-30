@@ -8,13 +8,19 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
-            ChessBoard board = new ChessBoard(8, 8);
+            try
+            {
+                ChessBoard board = new ChessBoard(8, 8);
 
-            board.PutPiece(new Rook(board, Color.Black), new Position(0, 0));
-            board.PutPiece(new Rook(board, Color.Black), new Position(1, 3));
-            board.PutPiece(new King(board, Color.Black), new Position(2, 4));
+                board.PutPiece(new Rook(board, Color.Black), new Position(0, 0));
+                board.PutPiece(new Rook(board, Color.Black), new Position(1, 9));
+                board.PutPiece(new King(board, Color.Black), new Position(0, 2));
 
-            Screen.BoardPrinter(board);
+                Screen.BoardPrinter(board);
+            } catch(BoardException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
