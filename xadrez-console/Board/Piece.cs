@@ -13,12 +13,12 @@ namespace Board
         public int MoveQtt { get; protected set; }
         public ChessBoard Board { get; protected set; }
 
-        public Piece(Position position, Color color, ChessBoard board)
+        public Piece(ChessBoard board, Color color)
         {
-            Position = position;
+            Position = null;
+            Board = board;
             Color = color;
             MoveQtt = 0;
-            Board = board;
         }
     }
 
