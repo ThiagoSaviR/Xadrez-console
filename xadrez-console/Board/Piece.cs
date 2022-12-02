@@ -20,6 +20,11 @@ namespace Board
             Color = color;
             MoveQtt = 0;
         }
+
+        public void increaseMovements()
+        {
+            MoveQtt++;
+        }
     }
 
 }

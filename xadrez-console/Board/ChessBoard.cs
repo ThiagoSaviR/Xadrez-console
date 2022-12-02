@@ -12,7 +12,7 @@ namespace Board
         public int Columns { get; set; }
         private Piece[,] Pieces;
 
-        public ChessBoard (int lines, int columns)
+        public ChessBoard(int lines, int columns)
         {
             Lines = lines;
             Columns = columns;
@@ -25,7 +25,7 @@ namespace Board
         }
         public Piece Piece(Position position)
         {
-            return Pieces[position.Line, position.Column];  
+            return Pieces[position.Line, position.Column];
         }
         public bool ExistPiece(Position position)
         {
@@ -33,14 +33,25 @@ namespace Board
             return Piece(position) != null;
         }
 
-        public void PutPiece (Piece piece, Position position)
+        public void PutPiece(Piece piece, Position position)
         {
             if (ExistPiece(position))
             {
                 throw new BoardException("Já existe uma peça nessa posição");
             }
-            Pieces[position.Line, position.Column] = piece; 
+            Pieces[position.Line, position.Column] = piece;
             piece.Position = position;
+        }
+        public Piece RemovePiece(Position position)
+        {
+            if (Piece(position) == null)
+            {
+                return null;
+            }
+            Piece aux = Piece(position);
+            aux.Position = null;
+            Pieces[position.Line, position.Column] = null;
+            return aux;
         }
 
         public bool ValidPosition(Position position)
