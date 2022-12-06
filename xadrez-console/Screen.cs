@@ -65,7 +65,7 @@ namespace xadrez_console
             }
             else
             {
-                if (piece.Color == Color.White)
+                if (piece.Color == Color.Branca)
                 {
                     Console.Write(piece);
                 }

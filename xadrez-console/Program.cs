@@ -14,29 +14,47 @@ namespace xadrez_console
 
                 while (!game.EndGame)
                 {
-                    Console.Clear();
-                    Screen.BoardPrinter(game.Board);
-                    Console.WriteLine();
+                    try
+                    {
+                        Console.Clear();
+                        Screen.BoardPrinter(game.Board);
+                        Console.WriteLine();
 
-                    Console.Write("Origem: ");
-                    Position origin = Screen.ReadChessPosition().toPositon();
+                        Console.WriteLine("Turno: " + game.turn);
+                        Console.WriteLine("Aguardando jogada: " + game.CurrentPlayer);
 
-                    bool[,] possiblePositions = game.Board.Piece(origin).PossibleMoves();
+                        Console.WriteLine();
+                        Console.Write("Origem: ");
+                        Position origin = Screen.ReadChessPosition().toPositon();
+                        game.OriginPositionValidation(origin);
 
-                    Console.Clear();
-                    Screen.BoardPrinter(game.Board, possiblePositions);
+                        bool[,] possiblePositions = game.Board.Piece(origin).PossibleMoves();
+
+                        Console.Clear();
+                        Screen.BoardPrinter(game.Board, possiblePositions);
+                        Console.WriteLine();
+                        Console.WriteLine("Turno: " + game.turn);
+                        Console.WriteLine("Aguardando jogada: " + game.CurrentPlayer);
 
 
-                    Console.WriteLine();
-                    Console.Write("Destino: ");
-                    Position destiny = Screen.ReadChessPosition().toPositon();
+                        Console.WriteLine();
+                        Console.Write("Destino: ");
+                        Position destiny = Screen.ReadChessPosition().toPositon();
+                        game.DestinyPositionValidation(origin, destiny);
 
-                    game.Moving(origin, destiny);
+                        game.PerformMove(origin, destiny);
+                    }
+                    catch (BoardException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.ReadLine();
+                    }
 
                 }
 
-    
-            } catch(BoardException e)
+
+            }
+            catch (BoardException e)
             {
                 Console.WriteLine(e.Message);
             }
