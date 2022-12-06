@@ -1,0 +1,47 @@
+[33mcommit 72005db29e10d7e5fe2222cd12f860db7ff5949a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: ThiagoSaviR <thiagosavir@gmail.com>
+Date:   Thu Dec 1 15:59:12 2022 -0300
+
+    chore: screen printer
+
+[33mcommit 58b7fd7bb8393c9ab8365d8c0643ba1d8e3defcc[m
+Author: ThiagoSaviR <thiagosavir@gmail.com>
+Date:   Wed Nov 30 16:01:17 2022 -0300
+
+    feature: create class ChessPosition
+
+[33mcommit 2d098ffe1367c397c4a73ef01d17689625668066[m
+Author: ThiagoSaviR <thiagosavir@gmail.com>
+Date:   Wed Nov 30 15:18:42 2022 -0300
+
+    feature: create board exceptions
+
+[33mcommit a3792618d1333eebc5e2abf1041bf59b39734fb1[m
+Author: Thiago <thiagosavir@gmail.com>
+Date:   Wed Nov 30 09:12:33 2022 -0300
+
+    feature: init place pieces in the board
+
+[33mcommit 1090b7d4e7f0a7958668a5897f8ecd67c50da3f8[m
+Author: Thiago Ribeiro <thiagosavir@gmail.com>
+Date:   Fri Nov 25 16:45:21 2022 -0300
+
+    feature: create the initial board
+
+[33mcommit de2ae10e45a79de6ab1c14d5ac4d8930d783a716[m
+Author: Thiago Ribeiro <thiagosavir@gmail.com>
+Date:   Fri Nov 25 15:58:06 2022 -0300
+
+    feature: Init chess board
+
+[33mcommit 36991a94200e6d4e70667cb6fcb20cb25d7d5ae8[m
+Author: Thiago Ribeiro <thiagosavir@gmail.com>
+Date:   Fri Nov 25 10:11:47 2022 -0300
+
+    Feature: Create of the board class
+
+[33mcommit 73da1cb7eaf5a3ace8d360ab338ba4a8805f1937[m
+Author: Thiago Ribeiro <thiagosavir@gmail.com>
+Date:   Thu Nov 24 09:52:40 2022 -0300
+
+    create project

@@ -24,7 +24,7 @@ namespace Chess
         public void Moving(Position origin, Position destiny)
         {
             Piece piece = Board.RemovePiece(origin);
-            piece.increaseMovements();
+            piece.IncreaseMovements();
             Piece capturedPiece = Board.RemovePiece(destiny);
             Board.PutPiece(piece, destiny);
 
