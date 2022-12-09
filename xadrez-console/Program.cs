@@ -17,11 +17,7 @@ namespace xadrez_console
                     try
                     {
                         Console.Clear();
-                        Screen.BoardPrinter(game.Board);
-                        Console.WriteLine();
-
-                        Console.WriteLine("Turno: " + game.turn);
-                        Console.WriteLine("Aguardando jogada: " + game.CurrentPlayer);
+                        Screen.PrintGame(game);
 
                         Console.WriteLine();
                         Console.Write("Origem: ");
@@ -33,7 +29,7 @@ namespace xadrez_console
                         Console.Clear();
                         Screen.BoardPrinter(game.Board, possiblePositions);
                         Console.WriteLine();
-                        Console.WriteLine("Turno: " + game.turn);
+                        Console.WriteLine("Turno: " + game.Turn);
                         Console.WriteLine("Aguardando jogada: " + game.CurrentPlayer);
 
 
