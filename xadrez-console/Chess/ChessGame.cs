@@ -94,7 +94,7 @@ namespace Chess
         }
         public void DestinyPositionValidation(Position origin, Position destiny)
         {
-            if (!Board.Piece(origin).CanMoveTo(destiny))
+            if (!Board.Piece(origin).PossibleMove(destiny))
             {
                 throw new BoardException("Posição de destino inválida! (Precione ENTER)");
             }
