@@ -20,6 +20,11 @@
             MoveQtt++;
         }
 
+        public void DecreaseMovements()
+        {
+            MoveQtt--;
+        }
+
         public bool ExistsMoves()
         {
             bool[,] tab = PossibleMoves();
