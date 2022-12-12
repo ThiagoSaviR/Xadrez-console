@@ -55,16 +55,24 @@ namespace Chess
         {
             Piece capturedPiece = Moving(origin, destiny);
 
-            if (IsCheck(CurrentPlayer)) {
+            if (IsCheck(CurrentPlayer))
+            {
                 UnMoving(origin, destiny, capturedPiece);
                 throw new BoardException("Você não pode se colocar em Xeque!");
             }
-            if (IsCheck(Adversary(CurrentPlayer))) {
+            if (IsCheck(Adversary(CurrentPlayer)))
+            {
                 Check = true;
-            } else
+            }
+            else
             {
                 Check = false;
             }
+            if (IsCheckMate(Adversary(CurrentPlayer)))
+            {
+                EndGame = true;
+            }
+
             Turn++;
             ChangePlayer();
         }
@@ -136,7 +144,8 @@ namespace Chess
             if (color == Color.Branca)
             {
                 return Color.Vermelha;
-            } else
+            }
+            else
             {
                 return Color.Branca;
             }
@@ -155,13 +164,13 @@ namespace Chess
 
         public bool IsCheck(Color color)
         {
-            Piece king = IsKing(color); 
+            Piece king = IsKing(color);
             if (king == null)
             {
                 throw new BoardException("Não tem rei da cor" + color + " no tabuleiro!");
             }
 
-            foreach(Piece piece in PiecesInGame(Adversary(color)))
+            foreach (Piece piece in PiecesInGame(Adversary(color)))
             {
                 bool[,] mat = piece.PossibleMoves();
                 if (mat[king.Position.Line, king.Position.Column])
@@ -170,6 +179,39 @@ namespace Chess
                 }
             }
             return false;
+        }
+
+        public bool IsCheckMate(Color color)
+        {
+            if (!IsCheck(color))
+            {
+                return false;
+            }
+            foreach (Piece piece in PiecesInGame(color))
+            {
+                bool[,] mat = piece.PossibleMoves();
+                for (int i = 0; i < Board.Lines; i++)
+                {
+                    for (int j = 0; j < Board.Columns; j++)
+                    {
+                        if (mat[i, j])
+                        {
+                            Position origin = piece.Position;
+                            Position destiny = new Position(i, j);
+                            Piece capturedPiece = Moving(origin, destiny);
+                            bool checkTest = IsCheck(color);
+                            UnMoving(origin, destiny, capturedPiece);
+                            if (!checkTest)
+                            {
+                                return false;
+                            }
+
+                        }
+                    }
+                }
+
+            }
+            return true;
         }
 
         public void PutANewPiece(char column, int line, Piece piece)
@@ -181,18 +223,11 @@ namespace Chess
         private void PutPieces()
         {
             PutANewPiece('c', 1, new Rook(Board, Color.Branca));
-            PutANewPiece('c', 2, new Rook(Board, Color.Branca));
-            PutANewPiece('d', 2, new Rook(Board, Color.Branca));
-            PutANewPiece('e', 2, new Rook(Board, Color.Branca));
-            PutANewPiece('e', 1, new Rook(Board, Color.Branca));
             PutANewPiece('d', 1, new King(Board, Color.Branca));
+            PutANewPiece('h', 7, new Rook(Board, Color.Branca));
 
-            PutANewPiece('c', 7, new Rook(Board, Color.Vermelha));
-            PutANewPiece('c', 8, new Rook(Board, Color.Vermelha));
-            PutANewPiece('d', 7, new Rook(Board, Color.Vermelha));
-            PutANewPiece('e', 7, new Rook(Board, Color.Vermelha));
-            PutANewPiece('e', 8, new Rook(Board, Color.Vermelha));
-            PutANewPiece('d', 8, new King(Board, Color.Vermelha));
+            PutANewPiece('a', 8, new King(Board, Color.Vermelha));
+            PutANewPiece('b', 8, new Rook(Board, Color.Vermelha));
         }
 
     }

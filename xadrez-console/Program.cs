@@ -48,6 +48,8 @@ namespace xadrez_console
 
                 }
 
+                Console.Clear();
+                Screen.PrintGame(game);
 
             }
             catch (BoardException e)
