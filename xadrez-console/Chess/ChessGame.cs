@@ -222,12 +222,45 @@ namespace Chess
 
         private void PutPieces()
         {
-            PutANewPiece('c', 1, new Rook(Board, Color.Branca));
-            PutANewPiece('d', 1, new King(Board, Color.Branca));
-            PutANewPiece('h', 7, new Rook(Board, Color.Branca));
+            // white pieces
+            PutANewPiece('a', 1, new Rook(Board, Color.Branca));
+            PutANewPiece('b', 1, new Knight(Board, Color.Branca));
+            PutANewPiece('c', 1, new Bishop(Board, Color.Branca));
+            PutANewPiece('d', 1, new Queen(Board, Color.Branca));
+            PutANewPiece('e', 1, new King(Board, Color.Branca));
+            PutANewPiece('f', 1, new Bishop(Board, Color.Branca));
+            PutANewPiece('g', 1, new Knight(Board, Color.Branca));
+            PutANewPiece('h', 1, new Rook(Board, Color.Branca));
 
-            PutANewPiece('a', 8, new King(Board, Color.Vermelha));
-            PutANewPiece('b', 8, new Rook(Board, Color.Vermelha));
+            PutANewPiece('a', 2, new Pawn(Board, Color.Branca));
+            PutANewPiece('b', 2, new Pawn(Board, Color.Branca));
+            PutANewPiece('c', 2, new Pawn(Board, Color.Branca));
+            PutANewPiece('d', 2, new Pawn(Board, Color.Branca));
+            PutANewPiece('e', 2, new Pawn(Board, Color.Branca));
+            PutANewPiece('f', 2, new Pawn(Board, Color.Branca));
+            PutANewPiece('g', 2, new Pawn(Board, Color.Branca));
+            PutANewPiece('h', 2, new Pawn(Board, Color.Branca));
+           
+            //red pieces
+            PutANewPiece('a', 8, new Rook(Board, Color.Vermelha));
+            PutANewPiece('b', 8, new Knight(Board, Color.Vermelha));
+            PutANewPiece('c', 8, new Bishop(Board, Color.Vermelha));
+            PutANewPiece('d', 8, new Queen(Board, Color.Vermelha));
+            PutANewPiece('e', 8, new King(Board, Color.Vermelha));
+            PutANewPiece('f', 8, new Bishop(Board, Color.Vermelha));
+            PutANewPiece('g', 8, new Knight(Board, Color.Vermelha));
+            PutANewPiece('h', 8, new Rook(Board, Color.Vermelha));
+
+            PutANewPiece('a', 7, new Pawn(Board, Color.Vermelha));
+            PutANewPiece('b', 7, new Pawn(Board, Color.Vermelha));
+            PutANewPiece('c', 7, new Pawn(Board, Color.Vermelha));
+            PutANewPiece('d', 7, new Pawn(Board, Color.Vermelha));
+            PutANewPiece('e', 7, new Pawn(Board, Color.Vermelha));
+            PutANewPiece('f', 7, new Pawn(Board, Color.Vermelha));
+            PutANewPiece('g', 7, new Pawn(Board, Color.Vermelha));
+            PutANewPiece('h', 7, new Pawn(Board, Color.Vermelha));
+
+            
         }
 
     }

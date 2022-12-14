@@ -2,16 +2,16 @@
 
 namespace Chess
 {
-    class King : Piece
+    internal class Knight : Piece
     {
-        public King(ChessBoard board, Color color) :
+        public Knight(ChessBoard board, Color color) :
             base(board, color)
         {
         }
 
         public override string ToString()
         {
-            return "R";
+            return "C";
         }
 
         private bool CanMove(Position position)
@@ -26,50 +26,49 @@ namespace Chess
 
             Position position = new Position(0, 0);
 
-            // acima
-            position.SetValue(Position.Line - 1, Position.Column);
+            position.SetValue(Position.Line - 1, Position.Column - 2);
             if (Board.ValidPosition(position) && CanMove(position))
             {
                 tab[position.Line, position.Column] = true;
             }
-            //ne
-            position.SetValue(Position.Line - 1, Position.Column + 1);
+
+            position.SetValue(Position.Line - 2, Position.Column - 1);
             if (Board.ValidPosition(position) && CanMove(position))
             {
                 tab[position.Line, position.Column] = true;
             }
-            // direita
-            position.SetValue(Position.Line, Position.Column + 1);
+
+            position.SetValue(Position.Line - 2, Position.Column + 1);
             if (Board.ValidPosition(position) && CanMove(position))
             {
                 tab[position.Line, position.Column] = true;
             }
-            // se
-            position.SetValue(Position.Line + 1, Position.Column + 1);
+
+            position.SetValue(Position.Line - 1, Position.Column + 2);
             if (Board.ValidPosition(position) && CanMove(position))
             {
                 tab[position.Line, position.Column] = true;
             }
-            // abaixo
-            position.SetValue(Position.Line + 1, Position.Column);
+           
+            position.SetValue(Position.Line + 1, Position.Column + 2);
             if (Board.ValidPosition(position) && CanMove(position))
             {
                 tab[position.Line, position.Column] = true;
             }
-            // so
-            position.SetValue(Position.Line + 1, Position.Column - 1);
+            
+            position.SetValue(Position.Line + 2, Position.Column + 1);
             if (Board.ValidPosition(position) && CanMove(position))
             {
                 tab[position.Line, position.Column] = true;
             }
-            // esquerda
-            position.SetValue(Position.Line, Position.Column - 1);
+        
+            position.SetValue(Position.Line + 2, Position.Column - 2);
             if (Board.ValidPosition(position) && CanMove(position))
             {
                 tab[position.Line, position.Column] = true;
             }
-            // no
-            position.SetValue(Position.Line - 1, Position.Column - 1);
+
+            position.SetValue(Position.Line + 1, Position.Column - 2);
             if (Board.ValidPosition(position) && CanMove(position))
             {
                 tab[position.Line, position.Column] = true;

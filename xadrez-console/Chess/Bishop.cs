@@ -1,19 +1,17 @@
-﻿using System;
-using Board;
-
+﻿using Board;
 
 namespace Chess
 {
-    class Rook : Piece
+    class Bishop : Piece
     {
-        public Rook(ChessBoard board, Color color) :
+        public Bishop(ChessBoard board, Color color) :
             base(board, color)
         {
         }
 
         public override string ToString()
         {
-            return "T";
+            return "B";
         }
 
         private bool CanMove(Position position)
@@ -28,8 +26,8 @@ namespace Chess
 
             Position position = new Position(0, 0);
 
-            // acima
-            position.SetValue(Position.Line - 1, Position.Column);
+            // NO
+            position.SetValue(Position.Line - 1, Position.Column - 1);
             while (Board.ValidPosition(position) && CanMove(position))
             {
                 tab[position.Line, position.Column] = true;
@@ -37,12 +35,12 @@ namespace Chess
                 {
                     break;
                 }
-                position.Line = position.Line - 1;
+                position.SetValue(position.Line - 1, position.Column - 1);
             }
 
-            // abaixo
+            // NE
 
-            position.SetValue(Position.Line + 1, Position.Column);
+            position.SetValue(Position.Line - 1, Position.Column + 1);
             while (Board.ValidPosition(position) && CanMove(position))
             {
                 tab[position.Line, position.Column] = true;
@@ -50,12 +48,12 @@ namespace Chess
                 {
                     break;
                 }
-                position.Line = position.Line + 1;
+                position.SetValue(position.Line - 1, position.Column + 1);
             }
 
-            // direita
+            // SE
 
-            position.SetValue(Position.Line, Position.Column + 1);
+            position.SetValue(Position.Line + 1, Position.Column + 1);
             while (Board.ValidPosition(position) && CanMove(position))
             {
                 tab[position.Line, position.Column] = true;
@@ -63,12 +61,12 @@ namespace Chess
                 {
                     break;
                 }
-                position.Column = position.Column + 1;
+                position.SetValue(position.Line + 1, position.Column + 1);
             }
 
-            // esquerda
+            // SO
 
-            position.SetValue(Position.Line, Position.Column - 1);
+            position.SetValue(Position.Line + 1, Position.Column - 1);
             while (Board.ValidPosition(position) && CanMove(position))
             {
                 tab[position.Line, position.Column] = true;
@@ -76,10 +74,9 @@ namespace Chess
                 {
                     break;
                 }
-                position.Column = position.Column - 1;
+                position.SetValue(position.Line + 1, position.Column - 1);
             }
             return tab;
-
         }
     }
 }
