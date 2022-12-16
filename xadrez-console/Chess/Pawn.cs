@@ -4,11 +4,13 @@ using Board;
 
 namespace Chess
 {
-    internal class Pawn : Piece
+    class Pawn : Piece
     {
-        public Pawn(ChessBoard board, Color color) :
+        private ChessGame Game;
+        public Pawn(ChessBoard board, Color color, ChessGame game) :
             base(board, color)
         {
+            Game = game;
         }
 
         public override string ToString()
@@ -61,6 +63,23 @@ namespace Chess
                     tab[position.Line, position.Column] = true;
                 }
 
+                // # Jogada especial En Passant
+
+                if (Position.Line == 3)
+                {
+                    Position left = new Position(Position.Line, Position.Column - 1);
+                    if (Board.ValidPosition(left) && ExistAdversary(left) && Board.Piece(left) == Game.CanEnPassant)
+                    {
+                        tab[left.Line - 1, left.Column] = true;
+                    }
+                    Position right = new Position(Position.Line, Position.Column + 1);
+                    if (Board.ValidPosition(right) && ExistAdversary(right) && Board.Piece(right) == Game.CanEnPassant)
+                    {
+                        tab[right.Line - 1, right.Column] = true;
+                    }
+
+                }
+
             } else
             {
                 position.SetValue(Position.Line + 1, Position.Column);
@@ -83,6 +102,24 @@ namespace Chess
                 {
                     tab[position.Line, position.Column] = true;
                 }
+
+                // # Jogada especial En Passant
+
+                if (Position.Line == 4)
+                {
+                    Position left = new Position(Position.Line, Position.Column - 1);
+                    if (Board.ValidPosition(left) && ExistAdversary(left) && Board.Piece(left) == Game.CanEnPassant)
+                    {
+                        tab[left.Line + 1, left.Column] = true;
+                    }
+                    Position right = new Position(Position.Line, Position.Column + 1);
+                    if (Board.ValidPosition(right) && ExistAdversary(right) && Board.Piece(right) == Game.CanEnPassant)
+                    {
+                        tab[right.Line + 1, right.Column] = true;
+                    }
+
+                }
+
             }
             return tab;
 
