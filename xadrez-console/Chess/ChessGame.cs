@@ -141,6 +141,23 @@ namespace Chess
                 UnMoving(origin, destiny, capturedPiece);
                 throw new BoardException("Você não pode se colocar em Xeque!");
             }
+
+            Piece piece = Board.Piece(destiny);
+
+            // # Jogada especial Promocao
+
+            if (piece is Pawn) 
+            {
+                if (piece.Color == Color.Branca && destiny.Line == 0 || (piece.Color == Color.Vermelha && destiny.Line == 7))
+                {
+                    piece = Board.RemovePiece(destiny);
+                    Pieces.Remove(piece);
+                    Piece queen = new Queen(Board, piece.Color);
+                    Board.PutPiece(queen, destiny);
+                    Pieces.Add(queen);
+                }
+            }
+
             if (IsCheck(Adversary(CurrentPlayer)))
             {
                 Check = true;
@@ -159,7 +176,7 @@ namespace Chess
             }
 
             // # Jogada especial En Passant
-            Piece piece = Board.Piece(destiny);
+            
             if (piece is Pawn && (destiny.Line == origin.Line - 2 || destiny.Line == origin.Line + 2))
             {
                 CanEnPassant = piece;
